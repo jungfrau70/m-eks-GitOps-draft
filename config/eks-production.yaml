@@ -5,7 +5,7 @@ kind: ClusterConfig
 metadata:
   name: production
   region: ap-northeast-2
-  version: "1.16"
+  version: "1.21"
 
 availabilityZones: ["ap-northeast-2a", "ap-northeast-2b", "ap-northeast-2c", "ap-northeast-2d"]
 
@@ -33,13 +33,13 @@ managedNodeGroups:
         externalDNS: true
 
 fargateProfiles:
-  - name: serverless
+  - name: fargate
     selectors:
       # All workloads in the "dev" Kubernetes namespace matching the following
       # label selectors will be scheduled onto Fargate:
-      - namespace: dev2
+      - namespace: fargate-dev
         labels:
-          env: dev2
+          env: fargate-dev
           checks: passed
           
 # To enable all of the control plane logs, uncomment below:

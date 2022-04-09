@@ -18,11 +18,13 @@ if [ ! -x ${LBC_VERSION} ]
 fi
 
 helm upgrade -i aws-load-balancer-controller \
-    eks/aws-load-balancer-controller \
+    ./aws-load-balancer-controller/ \
     -n kube-system \
-    --set clusterName=eksworkshop-eksctl \
+    --set clusterName=production \
     --set serviceAccount.create=false \
     --set serviceAccount.name=aws-load-balancer-controller \
-    --set image.tag="${LBC_VERSION}"
+    --set image.tag="${LBC_VERSION}" \
+    --values=./aws-load-balancer-controller/values.yaml
 
+    # eks/aws-load-balancer-controller \
 kubectl -n kube-system rollout status deployment aws-load-balancer-controller
