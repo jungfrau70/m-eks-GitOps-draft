@@ -1,0 +1,14 @@
+helm search repo fluentd
+helm fetch bitnami/fluentd
+tar xvf fluentd-3.0.0.tgz
+mv fluentd chart
+mkdir 07_fluentd
+mv chart/ 07_fluentd/
+cp 06_kibana/.env 07_fluentd/
+cd 07_fluentd/
+vi .env
+bash 1_deploy.sh
+vi chart/
+vi 1_deploy.sh
+bash 1_deploy.sh
+helm ls -n lma

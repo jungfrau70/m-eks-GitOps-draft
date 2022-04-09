@@ -1,0 +1,30 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: airflow
+  namespace: production
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: airflow-production
+  chart:
+    repository: https://github.com/jungfrau70/helm-chart-airflow-eks
+    name: airflow
+    version: 1.0.0
+  values:
+    fernetKey: "zTxhk7FuGqQVPZVoukLn5bGWOrgHzhQnBnaqAItcZGI="
+    env:
+      - name: "AIRFLOW__KUBERNETES__DAGS_IN_IMAGE"
+        value: "True"
+      - name: "AIRFLOW__KUBERNETES__NAMESPACE"
+        vlaue: "production"
+      - name: "AIRFLOW__KUBERNETES__WORKER_CONTAINER_REPOSITORY"
+        vlaue: "apache/airflow"
+      - name: "AIRFLOW__KUBERNETES__WORKER_CONTAINER_TAG"
+        vlaue: "1.10.10.1-alpha2-python3.7"
+      - name: "AIRFLOW__KUBERNETES__RUN_AS_USER"
+        vlaue: "50000"
+      - name: "AIRFLOW__CORE__LOAD_EXAMPLES"
+        value: "False"
+    executor: "KubernetesExecutor"
+    

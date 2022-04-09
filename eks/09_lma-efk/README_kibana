@@ -1,0 +1,5 @@
+1. Get the application URL by running these commands:
+  export POD_NAME=$(kubectl get pods --namespace lma -l "app.kubernetes.io/name=kibana,app.kubernetes.io/instance=lma-kibana" -o jsonpath="{.items[0].metadata.name}")
+  echo "Visit http://127.0.0.1:8080 to use your application"
+  kubectl port-forward svc/lma-kibana 8080:5601
+
