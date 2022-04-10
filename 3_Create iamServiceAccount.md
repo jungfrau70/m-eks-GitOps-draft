@@ -11,7 +11,7 @@ cd $WORKDIR
 # 1. (eksAdmin) Setup IAM role for ServiceAccount
 #########################################################################################
 
-cd eks/03_setup-IAM-role-for-ServiceAccount/
+cd eks/02_setup-IAM-role-for-ServiceAccount/
 
 bash 1_check-prereqs.sh 
 bash 2_create-iam-oidc-provider.sh 

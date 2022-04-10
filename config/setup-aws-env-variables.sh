@@ -4,7 +4,12 @@
 # install some utilities
 sudo yum -y install jq gettext bash-completion moreutils
 
+echo 'export LBC_VERSION="v2.4.1"' >>  ~/.bash_profile
+echo 'export LBC_CHART_VERSION="1.4.1"' >>  ~/.bash_profile
+.  ~/.bash_profile
+
 # go the settings, AWS settings and turn off temporary credentials
+aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-action DISABLE
 rm -vf ${HOME}/.aws/credentials
 
 # configure aws env variables
