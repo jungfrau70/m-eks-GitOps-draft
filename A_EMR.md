@@ -1,0 +1,1 @@
+https://medium.com/@mgjmingujo/aws-emr%EA%B3%BC-airflow%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-batch-data-processing-a100fc2f4f10
