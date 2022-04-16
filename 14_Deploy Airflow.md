@@ -4,17 +4,33 @@ Prerequistes:
 - Activate python virtual environment, eksAdmin
 - Run eks cluster
 
-export WORKDIR='/home/ec2-user/environment'
+export WORKDIR='/home/ec2-user/environment/final/eks/14_airflow'
 cd $WORKDIR
 
+
 #########################################################################################
-# 1. (eksAdmin) Deploy airflow with gitops
+# 1. Deploy 
 #########################################################################################
 
-kubectl create namespace airflow
-kubectl get namespaces
+cat .env
 
-helm repo add apache-airflow https://airflow.apache.org
-helm repo update
-helm search repo airflow
-helm install airflow apache-airflow/airflow --namespace airflow --debug
+bash 1_deploy.sh 
+
+#########################################################################################
+# 2. Monitor
+#########################################################################################
+
+bash 0_monitor.sh
+
+#########################################################################################
+# 3. Check Status
+#########################################################################################
+
+bash 3_status.sh 
+
+#########################################################################################
+# 4. Delete
+#########################################################################################
+
+bash 4_delete.sh
+

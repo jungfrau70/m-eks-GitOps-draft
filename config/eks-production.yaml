@@ -12,7 +12,7 @@ availabilityZones: ["ap-northeast-2a", "ap-northeast-2b", "ap-northeast-2c", "ap
 #managedNodeGroups:
 nodeGroups:
   - name: nodegroup
-    instanceType: t3.small # m5.xlarge
+    instanceType: t3.xlarge # t3.small # m5.xlarge
     desiredCapacity: 3
     minSize: 2
     maxSize: 5

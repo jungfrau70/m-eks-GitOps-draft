@@ -1,0 +1,31 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+#apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: airflow
+  name: ingress-airflow
+  annotations:
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:004625312447:certificate/7931dcd8-db0d-4595-88df-51f3d57819aa
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    kubernetes.io/ingress.class: alb
+  labels:
+    app: airflow
+spec:
+  # tls:
+  # # Replace the placeholder with your domain name (e.g. ingress.dev.blog.shoot.canary.k8s-hana.ondemand.com)
+  # - hosts:
+  #   - airflow.topk8s.com
+  #   secretName: airflow-prod-secret
+  rules:
+    # Replace the placeholder with your domain name (e.g. ingress.dev.blog.shoot.canary.k8s-hana.ondemand.com)
+    - host: airflow.topk8s.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: airflow
+              servicePort: 8080
+---
