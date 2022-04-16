@@ -10,22 +10,18 @@ export WORKDIR='/home/ec2-user/environment/final'
 cd $WORKDIR
 
 #########################################################################################
-# 1. Create AWS IAM Account & Role
+# 1. Create AWS IAM Account
 #########################################################################################
 
-# Create UserGroup
-  ㄴ Cloud9users with AdministratorAccess
-  
 # Create User
-  ㄴ admin
+  ㄴ admin with AdministratorAccess
   
-# Create Role & Attach it to Cloud9
-  ㄴ Admin with AdministratorAccess
   
 #########################################################################################
 # 2. Login to AWS console
 #########################################################################################
 
+# login with admin
 
 
 #########################################################################################
@@ -33,7 +29,7 @@ cd $WORKDIR
 #########################################################################################
 
 # Create bastion workstation for data engineering
-  ㄴ name: bastion
+  ㄴ name: workstation
   ㄴ size: t3.medium
   
 # Increase disk size
@@ -48,28 +44,36 @@ cd $WORKDIR
 
 
 #########################################################################################
-# 5. Update IAM Settings for Cloud9
+# 5. Create Role & Attach it to Cloud9
 #########################################################################################
 
-. config/update-IAM-settings.sh
-
-
+# Create Role & Attach it to Cloud9
+  ㄴ eksAdmin with AdministratorAccess
+  
+  
 #########################################################################################
 # 6. Update IAM Settings for Cloud9
 #########################################################################################
 
+. config/upgrade-awscli.sh
+
+
+#########################################################################################
+# 7. Update IAM Settings for Cloud9
+#########################################################################################
+
 . config/update-IAM-settings.sh
 
 
 #########################################################################################
-# 7. Create a CMK for the EKS cluster to use when encrypting your Kubernetes secrets
+# 8. Create a CMK for the EKS cluster to use when encrypting your Kubernetes secrets
 #########################################################################################
 
 . config/create-aws-kms-cmk.sh
 
 
 #########################################################################################
-# 8. Install eksctl
+# 9. Install eksctl
 #########################################################################################
 
 . config/install-eksctl.sh
@@ -126,10 +130,6 @@ cd $WORKDIR
 
 <!--# Upgrade pip-->
 <!--pip install --upgrade pip-->
-
-
-
-
 
 
 
