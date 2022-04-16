@@ -8,3 +8,12 @@ helm version --short
 
 # Download the stable repo
 helm repo add stable https://charts.helm.sh/stable
+
+# List the charts
+helm search repo stable
+
+# Configure Bash completion for the helm command
+helm completion bash >> ~/.bash_completion
+. /etc/profile.d/bash_completion.sh
+. ~/.bash_completion
+source <(helm completion bash)
