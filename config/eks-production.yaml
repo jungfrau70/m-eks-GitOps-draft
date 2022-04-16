@@ -9,16 +9,14 @@ metadata:
 
 availabilityZones: ["ap-northeast-2a", "ap-northeast-2b", "ap-northeast-2c", "ap-northeast-2d"]
 
-managedNodeGroups:
+#managedNodeGroups:
+nodeGroups:
   - name: nodegroup
-    instanceType: m5.xlarge
+    instanceType: t3.small # m5.xlarge
     desiredCapacity: 3
     minSize: 2
-    maxSize: 4
-    volumeSize: 200
-    ssh:
-      allow: true
-      publicKeyName: eks
+    maxSize: 5
+    volumeSize: 100
     labels: { role: worker }
     tags:
       nodegroup-role: worker
@@ -48,7 +46,6 @@ cloudWatch:
     enableTypes: ["*"]
 
 secretsEncryption:
-  # for eksAdminRole, It is required to use only this role after the cluster creation
+  # for eksAdmin role, It is required to use only this role after the cluster creation
   # If not, it makes the authoriztion error
-  keyARN: arn:aws:kms:ap-northeast-2:616278445611:key/aa374e4b-abce-4b68-96fc-b57f7f6dce25
-  #keyARN: arn:aws:kms:ap-northeast-2:616278445611:key/8784ad52-4b5d-406e-843d-4c6d88bca2a8  # for ec2AdminRole
+  keyARN: arn:aws:kms:ap-northeast-2:004625312447:key/1f4a5621-791b-42ed-9c53-c7a3932ab77f
