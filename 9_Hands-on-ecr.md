@@ -1,5 +1,5 @@
 
-export WORKDIR='/home/ec2-user/environment/eks/04_registry-ecr'
+export WORKDIR='/home/ec2-user/environment/final/workloads/09_registry-ecr'
 cd $WORKDIR
 
 cat >Dockerfile<<EOF

@@ -33,12 +33,13 @@ eksctl create cluster -f config/eks-production.yaml
 # Check if the cluster is healthy, After creation. It takes about 15 minutes
 kubectl get nodes
 kubectl get pods --all-namespaces
+kubectl get pods -A -o wide
 
 
 #########################################################################################
 # 4. Export the Worker Role Name for use throughout the workshop
 #########################################################################################
 
-STACK_NAME=$(eksctl get nodegroup --cluster eksworkshop-eksctl -o json | jq -r '.[].StackName')
+STACK_NAME=$(eksctl get nodegroup --cluster production -o json | jq -r '.[].StackName')
 ROLE_NAME=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME | jq -r '.StackResources[] | select(.ResourceType=="AWS::IAM::Role") | .PhysicalResourceId')
 echo "export ROLE_NAME=${ROLE_NAME}" | tee -a ~/.bash_profile

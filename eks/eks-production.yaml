@@ -1,0 +1,49 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: production
+  region: ap-northeast-2
+  version: "1.21"
+
+availabilityZones: ["ap-northeast-2a", "ap-northeast-2b", "ap-northeast-2c", "ap-northeast-2d"]
+
+#managedNodeGroups:
+nodeGroups:
+  - name: nodegroup
+    instanceType: t3.xlarge # t3.small # m5.xlarge
+    desiredCapacity: 3
+    minSize: 2
+    maxSize: 5
+    volumeSize: 100
+    labels: { role: worker }
+    tags:
+      nodegroup-role: worker
+    iam:
+      withAddonPolicies:
+        ebs: true
+        imageBuilder: true
+        efs: true
+        albIngress: true
+        autoScaler: true
+        cloudWatch: true
+        externalDNS: true
+
+fargateProfiles:
+  - name: fargate
+    selectors:
+      # All workloads in the "dev" Kubernetes namespace matching the following
+      # label selectors will be scheduled onto Fargate:
+      - namespace: fargate-dev
+        labels:
+          env: fargate-dev
+          checks: passed
+          
+# To enable all of the control plane logs, uncomment below:
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["*"]
+
+secretsEncryption:
+  keyARN: arn:aws:kms:ap-northeast-2:004625312447:key/1f4a5621-791b-42ed-9c53-c7a3932ab77f

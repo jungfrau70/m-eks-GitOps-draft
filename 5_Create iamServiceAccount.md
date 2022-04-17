@@ -4,7 +4,7 @@ Prerequistes:
 - Activate python virtual environment, eksAdmin
 - Run eks cluster
 
-export WORKDIR='/home/ec2-user/environment/final/eks/05_setup-IAM-role-for-ServiceAccount'
+export WORKDIR='/home/ec2-user/environment/final/workloads/05_setup-IAM-role-for-ServiceAccount'
 cd $WORKDIR
 
 #########################################################################################

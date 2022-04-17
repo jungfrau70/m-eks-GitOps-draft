@@ -37,7 +37,7 @@ A_cleanup-the-applications.sh
 export WORKDIR='/home/ec2-user/environment/final/'
 cd $WORKDIR
 
-bash config/install-helm.sh
+bash eks/install-helm.sh
 
 
 #########################################################################################

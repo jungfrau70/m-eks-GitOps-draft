@@ -13,8 +13,11 @@ cd $WORKDIR
 # 1. Create AWS IAM Account
 #########################################################################################
 
+# Create Group
+  ㄴ admins
+  
 # Create User
-  ㄴ admin with AdministratorAccess
+  ㄴ admin
   
   
 #########################################################################################
@@ -30,14 +33,14 @@ cd $WORKDIR
 
 # Create bastion workstation for data engineering
   ㄴ name: workstation
-  ㄴ size: t3.medium
+  ㄴ size: t3.small
   
 # Increase disk size
 . config/increase-disk-size.sh
 
 
 #########################################################################################
-# 4. Create Cloud9 Environment
+# 4. Install k8s tools
 #########################################################################################
 
 . config/install-k8s-tools.sh
@@ -47,7 +50,7 @@ cd $WORKDIR
 # 5. Create Role & Attach it to Cloud9
 #########################################################################################
 
-# Create Role & Attach it to Cloud9
+# Create Role & Attach it to Cloud9(=EC2)
   ㄴ eksAdmin with AdministratorAccess
   
   
@@ -81,14 +84,14 @@ cd $WORKDIR
 
 
 <!--#########################################################################################-->
-<!--# 9. Create key pair for EC2-->
+<!--# 10. Create key pair for EC2-->
 <!--#########################################################################################-->
 
 <!--. config/create-ec2-key-pair.sh-->
 
 
 <!--#########################################################################################-->
-<!--# 10. Update IAM Settings for Cloud9-->
+<!--# 11. Update IAM Settings for Cloud9-->
 <!--#########################################################################################-->
 
 <!--bash config/create-kms-alias.sh-->
@@ -137,4 +140,4 @@ cd $WORKDIR
 # 9. (eksAdmin) Install aws-iam-authenticator
 #########################################################################################
 
-bash config/install-aws-iam-authenticator.sh
+#bash config/install-aws-iam-authenticator.sh

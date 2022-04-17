@@ -7,7 +7,7 @@ Prerequistes:
 References:
 - 
 
-export WORKDIR='/home/ec2-user/environment/final/eks/13_kibana'
+export WORKDIR='/home/ec2-user/environment/final/workloads/13_kibana'
 cd $WORKDIR
 
 

@@ -7,7 +7,7 @@ Prerequistes:
 References:
 - 
 
-export WORKDIR='/home/ec2-user/environment/final/eks/11_elasticsearch'
+export WORKDIR='/home/ec2-user/environment/final/workloads/11_elasticsearch'
 cd $WORKDIR
 
 
