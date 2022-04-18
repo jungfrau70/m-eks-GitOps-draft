@@ -1,7 +1,7 @@
 Prerequistes:
 - Create Cloud9 for EKS environment
 
-export WORKDIR='/home/ec2-user/environment/final'
+export WORKDIR='/home/ec2-user/workshop'
 cd $WORKDIR
 
 #########################################################################################
@@ -12,7 +12,7 @@ cd $WORKDIR
 echo $MASTER_ARN
 
 # Check if kms-alias key arn is correct.
-tail -n 5 config/eks-production.yaml
+tail -n 5 eks/eks-production.yaml
 
 # It is required to use only this role after the cluster creation
 # If not, it makes the authoriztion error
@@ -23,7 +23,7 @@ tail -n 5 config/eks-production.yaml
 #########################################################################################
 
 # Create the cluster
-eksctl create cluster -f config/eks-production.yaml 
+eksctl create cluster -f eks/eks-production.yaml
 
 
 #########################################################################################

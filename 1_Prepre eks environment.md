@@ -4,82 +4,46 @@ Prerequistes:
 
 References:
 - https://www.eksworkshop.com/010_introduction/
-- 
+- https://www.eksworkshop.com/020_prerequisites/
 
-export WORKDIR='/home/ec2-user/environment/final'
+export WORKDIR='/home/ec2-user/workshop/'
 cd $WORKDIR
 
+
 #########################################################################################
-# 1. Create AWS IAM Account
+# 1. Install k8s tools
 #########################################################################################
 
-# Create Group
-  ㄴ admins
-  
-# Create User
-  ㄴ admin
-  
+. eks/install-k8s-tools.sh
+
   
 #########################################################################################
-# 2. Login to AWS console
+# 2. Install awscli version 2
 #########################################################################################
 
-# login with admin
+. eks/upgrade-awscli.sh
 
+aws --version
 
 #########################################################################################
-# 3. Create Cloud9 Environment
+# 3. (Cloud9 WebUI) Update IAM Settings for Cloud9
 #########################################################################################
 
-# Create bastion workstation for data engineering
-  ㄴ name: workstation
-  ㄴ size: t3.small
-  
-# Increase disk size
-. config/increase-disk-size.sh
+. eks/update-IAM-settings.sh
 
 
 #########################################################################################
-# 4. Install k8s tools
+# 4. Create a CMK for the EKS cluster to use when encrypting your Kubernetes secrets
 #########################################################################################
 
-. config/install-k8s-tools.sh
-
-
-#########################################################################################
-# 5. Create Role & Attach it to Cloud9
-#########################################################################################
-
-# Create Role & Attach it to Cloud9(=EC2)
-  ㄴ eksAdmin with AdministratorAccess
-  
-  
-#########################################################################################
-# 6. Update IAM Settings for Cloud9
-#########################################################################################
-
-. config/upgrade-awscli.sh
+. eks/create-aws-kms-cmk.sh
 
 
 #########################################################################################
-# 7. Update IAM Settings for Cloud9
+# 5. Install eksctl
 #########################################################################################
 
-. config/update-IAM-settings.sh
-
-
-#########################################################################################
-# 8. Create a CMK for the EKS cluster to use when encrypting your Kubernetes secrets
-#########################################################################################
-
-. config/create-aws-kms-cmk.sh
-
-
-#########################################################################################
-# 9. Install eksctl
-#########################################################################################
-
-. config/install-eksctl.sh
+. eks/install-eksctl.sh
 
 
 
