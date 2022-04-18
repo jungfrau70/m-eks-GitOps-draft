@@ -1,7 +1,10 @@
 Prerequistes:
 - Create Cloud9 for EKS environment
 
-export WORKDIR='/home/ec2-user/workshop'
+References:
+- 
+
+export WORKDIR='/home/ec2-user/workshop/devops/A1_airflow-dev'
 cd $WORKDIR
 
 #########################################################################################

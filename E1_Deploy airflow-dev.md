@@ -1,11 +1,23 @@
 Prerequistes:
-- Login with IAM user
-- Create Cloud9(=Cloud IDE) WorkStation, Expand EC2 Volume (10->200 GB), Restart EC2
-- Activate python virtual environment, eksAdmin
-- Run eks cluster
+- Create Cloud9 for EKS environment
 
-export WORKDIR='/home/ec2-user/environment/final/eks/14_airflow'
+export WORKDIR='/home/ec2-user/workshop'
 cd $WORKDIR
+
+export WORKDIR='/home/ec2-user/workshop/expose-apps/A1_airflow-dev'
+cd $WORKDIR
+
+#########################################################################################
+# 0. Configure LoadBalancer - classic
+#########################################################################################
+
+# Check the followings in values.yaml
+  service:
+    type: LoadBalancer
+    ports:
+      - name: airflow-ui
+        port: "{{ .Values.ports.airflowUI }}"
+        targetPort: airflow-ui
 
 
 #########################################################################################

@@ -14,7 +14,7 @@ nodeGroups:
   - name: nodegroup
     instanceType: t3.xlarge # t3.small # m5.xlarge
     desiredCapacity: 3
-    minSize: 2
+    minSize: 1
     maxSize: 5
     volumeSize: 100
     labels: { role: worker }
