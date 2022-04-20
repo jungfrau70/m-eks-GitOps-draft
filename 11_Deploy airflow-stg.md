@@ -4,7 +4,7 @@ Prerequistes:
 export WORKDIR='/home/ec2-user/workshop'
 cd $WORKDIR
 
-export WORKDIR='/home/ec2-user/workshop/expose-apps/A2_airflow-stg'
+export WORKDIR='/home/ec2-user/workshop/workloads/11_airflow-stg'
 cd $WORKDIR
 
 #########################################################################################
