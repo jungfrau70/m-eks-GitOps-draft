@@ -1,6 +1,5 @@
 ---
-#apiVersion: networking.k8s.io/v1beta1
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   namespace: efk
@@ -9,23 +8,29 @@ metadata:
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:004625312447:certificate/f3b779b9-f68e-4162-be47-031f68fa7117
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/target-type: instance
   labels:
     app: kibana
 spec:
+  ingressClassName: alb
+  defaultBackend:
+    service:
+      name: kibana
+      port: 
+        number: 5601
   tls:
-  # Replace the placeholder with your domain name (e.g. ingress.dev.blog.shoot.canary.k8s-hana.ondemand.com)
   - hosts:
     - kibana.topk8s.com
     secretName: kibana-prod-secret
   rules:
-    # Replace the placeholder with your domain name (e.g. ingress.dev.blog.shoot.canary.k8s-hana.ondemand.com)
     - host: kibana.topk8s.com
       http:
         paths:
-          - path: /
+          - pathType: Prefix
+            path: /*
             backend:
-              serviceName: kibana
-              servicePort: 5601
+              service:
+                name: kibana
+                port:
+                  number: 5601
 ---

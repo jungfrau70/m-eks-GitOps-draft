@@ -4,6 +4,9 @@ Prerequistes:
 - Activate python virtual environment, eksAdmin
 - Run eks cluster
 
+References:
+-- https://www.eksworkshop.com/020_prerequisites/
+
 export WORKDIR='/home/ec2-user/workshop/alb/1_create-IAMServiceAccount'
 cd $WORKDIR
 

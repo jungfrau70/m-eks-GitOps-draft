@@ -8,7 +8,7 @@ metadata:
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:004625312447:certificate/7931dcd8-db0d-4595-88df-51f3d57819aa
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/target-type: instance # ip
     kubernetes.io/ingress.class: alb
   labels:
     app: airflow-dev
