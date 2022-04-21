@@ -21,7 +21,7 @@ cd $WORKDIR
 # 2. Install awscli version 2
 #########################################################################################
 
-. eks/upgrade-awscli.sh
+. eks/install-awscli2.sh
 
 aws --version
 

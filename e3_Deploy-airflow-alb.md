@@ -4,29 +4,20 @@ Prerequistes:
 - Activate python virtual environment, eksAdmin
 - Run eks cluster
 
-export WORKDIR='/home/ec2-user/workshop/expose-apps/A5_airflow-alb'
+export WORKDIR='/home/ec2-user/workshop/workloads/13_ingresses'
 cd $WORKDIR
 
 
 #########################################################################################
-# 1. Delete classic LBs
+# 1. Change the service type
 #########################################################################################
 
-# for airflow-dev
-kubectl -n airflow-dev delete svc airflow-dev-webserver
+# Patch
+kubectl -n airflow-dev patch svc airflow-dev-webserver -p '{"spec": {"type": "NodePort"}}'
 
-# for airflow-stg
-kubectl -n airflow-stg delete svc airflow-stg-webserver
-
-#########################################################################################
-# 2. Check if alb pods run
-#########################################################################################
-
-bash 0_monitor.sh 
-
-NAMESPACE     NAME                                            READY   STATUS    RESTARTS   AGE
-kube-system   aws-load-balancer-controller-85cfbbd877-2cmvq   1/1     Running   0          6m49s
-kube-system   aws-load-balancer-controller-85cfbbd877-6gzrg   1/1     Running   0          6m49s
+# Delete
+# kubectl -n airflow-dev delete svc airflow-dev-webserver
+# kubectl -n airflow-stg delete svc airflow-stg-webserver
 
 
 #########################################################################################

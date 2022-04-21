@@ -3,9 +3,12 @@
 # To ensure temporary credentials aren’t already in place 
 # we will remove any existing credentials file as well as 
 # disabling AWS managed temporary credentials:
-aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-action DISABLE
-rm -vf ${HOME}/.aws/credentials
 
+if [ ! -z "$C9_PID" ]
+then
+    aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-action DISABLE
+    rm -vf ${HOME}/.aws/credentials
+fi
 
 # We should configure our aws cli with our current region as default.
 export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)

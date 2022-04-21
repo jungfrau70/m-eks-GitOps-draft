@@ -4,7 +4,7 @@ Prerequistes:
 - Activate python virtual environment, eksAdmin
 - Run eks cluster
 
-export WORKDIR='/home/ec2-user/workshop/expose-apps/A3_setup-IAM-role-for-ServiceAccount'
+export WORKDIR='/home/ec2-user/workshop/alb/1_create-IAMServiceAccount'
 cd $WORKDIR
 
 #########################################################################################
