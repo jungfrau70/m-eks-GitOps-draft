@@ -1,7 +1,7 @@
 Prerequistes:
 - Create Cloud9 for EKS environment
 
-export WORKDIR='/home/ec2-user/environment/final/eks/04_example-microservices'
+export WORKDIR='/home/ec2-user/workshop/workloads/2_example-microservices'
 cd $WORKDIR
 
 

@@ -5,7 +5,7 @@ kind: ClusterConfig
 metadata:
   name: production
   region: ap-northeast-2
-  version: "1.21"
+  version: "1.19"
 
 availabilityZones: ["ap-northeast-2a", "ap-northeast-2b", "ap-northeast-2c", "ap-northeast-2d"]
 
@@ -13,6 +13,8 @@ availabilityZones: ["ap-northeast-2a", "ap-northeast-2b", "ap-northeast-2c", "ap
 nodeGroups:
   - name: nodegroup
     instanceType: t3.xlarge # t3.small # m5.xlarge
+    ssh:
+      enableSsm: true
     desiredCapacity: 3
     minSize: 1
     maxSize: 5
@@ -39,11 +41,11 @@ fargateProfiles:
         labels:
           env: fargate-dev
           checks: passed
-          
+
 # To enable all of the control plane logs, uncomment below:
-cloudWatch:
-  clusterLogging:
-    enableTypes: ["*"]
+# cloudWatch:
+#   clusterLogging:
+#     enableTypes: ["*"]
 
 secretsEncryption:
   keyARN: arn:aws:kms:ap-northeast-2:004625312447:key/1f4a5621-791b-42ed-9c53-c7a3932ab77f

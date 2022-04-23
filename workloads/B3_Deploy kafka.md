@@ -5,18 +5,18 @@ Prerequistes:
 - Run eks cluster
 
 References:
-- https://medium.com/nerd-for-tech/pyspark-spark-operator-amazon-eks-big-data-on-steroids-7d1ccedb765b
+- 
+- 
 
-export WORKDIR='/home/ec2-user/environment/final/workloads/08_spark-operator'
+export WORKDIR='/home/ec2-user/workshop/workloads/3_kafka'
 cd $WORKDIR
 
 
 #########################################################################################
-# 1. Deploy Kafka
+# 1. Deploy 
 #########################################################################################
 
 cat .env
-
 bash 1_deploy.sh 
 
 #########################################################################################

@@ -1,27 +1,18 @@
 Prerequistes:
-- Create Cloud9 for EKS environment
+- Login with IAM user
+- Create Cloud9(=Cloud IDE) WorkStation, Expand EC2 Volume (10->30 GB), Restart EC2
+- Activate python virtual environment, eksAdmin
+- Run eks cluster
 
-export WORKDIR='/home/ec2-user/workshop'
+References:
+- https://medium.com/nerd-for-tech/pyspark-spark-operator-amazon-eks-big-data-on-steroids-7d1ccedb765b
+
+export WORKDIR='/home/ec2-user/workshop/workloads/4_spark-operator'
 cd $WORKDIR
 
-export WORKDIR='/home/ec2-user/workshop/workloads/10_airflow-dev'
-cd $WORKDIR
 
 #########################################################################################
-# 0. Configure LoadBalancer - classic
-#########################################################################################
-
-# Check the followings in values.yaml
-  service:
-    type: LoadBalancer
-    ports:
-      - name: airflow-ui
-        port: "{{ .Values.ports.airflowUI }}"
-        targetPort: airflow-ui
-
-
-#########################################################################################
-# 1. Deploy 
+# 1. Deploy Kafka
 #########################################################################################
 
 cat .env
@@ -45,4 +36,3 @@ bash 3_status.sh
 #########################################################################################
 
 bash 4_delete.sh
-

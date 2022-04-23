@@ -7,7 +7,7 @@ Prerequistes:
 References:
 - 
 
-export WORKDIR='/home/ec2-user/environment/final/workloads/12_fluentd'
+export WORKDIR='/home/ec2-user/workshop/workloads/7_kibana'
 cd $WORKDIR
 
 

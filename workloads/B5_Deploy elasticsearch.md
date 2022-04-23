@@ -1,31 +1,38 @@
 Prerequistes:
-- Create Cloud9 for EKS environment
+- Login with IAM user
+- Create Cloud9(=Cloud IDE) WorkStation, Expand EC2 Volume (10->30 GB), Restart EC2
+- Activate python virtual environment, eksAdmin
+- Run eks cluster
 
-export WORKDIR='/home/ec2-user/environment/final/eks/03_k8s-dashboard'
+References:
+- 
+
+export WORKDIR='/home/ec2-user/workshop/workloads/5_elasticsearch'
 cd $WORKDIR
 
-#########################################################################################
-# 1. Deploy the dashboard
-#########################################################################################
-
-bash 1_deploy-k8s-dashboard.sh
-
 
 #########################################################################################
-# 1. Access the dashboard
+# 1. Deploy
 #########################################################################################
 
-1. In your Cloud9 environment, click Tools / Preview / Preview Running Application
-2. Scroll to the end of the URL and append:
+cat .env
 
-/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
-
-3. Open a New Terminal Tab and enter
-aws eks get-token --cluster-name production| jq -r '.status.token'
-
+bash 1_deploy.sh 
 
 #########################################################################################
-# 1. CleanUp
+# 2. Monitor
 #########################################################################################
 
-bash 4_cleanup-k8s-dashboard.sh
+bash 0_monitor.sh
+
+#########################################################################################
+# 3. Check Status
+#########################################################################################
+
+bash 3_status.sh 
+
+#########################################################################################
+# 4. Delete
+#########################################################################################
+
+bash 4_delete.sh

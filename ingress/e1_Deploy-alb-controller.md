@@ -4,7 +4,7 @@ Prerequistes:
 - Activate python virtual environment, eksAdmin
 - Run eks cluster
 
-export WORKDIR='/home/ec2-user/workshop/alb/2_alb-controller'
+export WORKDIR='/home/ec2-user/workshop/ingress/1_alb-controller'
 cd $WORKDIR
 
 

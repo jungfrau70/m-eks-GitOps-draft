@@ -4,21 +4,41 @@ Prerequistes:
 - Activate python virtual environment, eksAdmin
 - Run eks cluster
 
-export WORKDIR='/home/ec2-user/workshop/workloads/13_ingresses'
+
+#########################################################################################
+# 1. Deploy airflow with LoadBalancer (L4)
+#########################################################################################
+
+export WORKDIR='/home/ec2-user/workshop/workloads/8_airflow-dev'
 cd $WORKDIR
 
+cat .env
+
+cat 11_deploy.sh 
+
+# deploy
+bash 11_deploy.sh
 
 #########################################################################################
-# 1. Change the service type
+# 2. Change the service type
 #########################################################################################
 
-# Patch
+# get svc
+kubectl -n airflow-dev get svc
+
+# change service type (LoadBalancer to NodePort)
 kubectl -n airflow-dev patch svc airflow-dev-webserver -p '{"spec": {"type": "NodePort"}}'
+kubectl -n airflow-dev patch svc airflow-dev-webserver -p '{"spec": {"type": "LoadBalancer"}}'
 
 # Delete
 # kubectl -n airflow-dev delete svc airflow-dev-webserver
 # kubectl -n airflow-stg delete svc airflow-stg-webserver
 
+#########################################################################################
+# 3. Change the service type
+#########################################################################################
+
+bash 12_deploy-ingress.sh
 
 #########################################################################################
 # *. (If required) Trouble shooting

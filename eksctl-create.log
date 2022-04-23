@@ -1,0 +1,68 @@
+ec2-user:~/workshop (master) $ eksctl create cluster -f eks/eks-production.yaml 
+2022-04-23 00:02:02 [!]  SSM is now enabled by default; `ssh.enableSSM` is deprecated and will be removed in a future release
+2022-04-23 00:02:02 [!]  nodegroup.iam.withAddonPolicies.albIngress field is deprecated, please use awsLoadBalancerController instead
+2022-04-23 00:02:02 [ℹ]  eksctl version 0.93.0
+2022-04-23 00:02:02 [ℹ]  using region ap-northeast-2
+2022-04-23 00:02:02 [ℹ]  subnets for ap-northeast-2a - public:192.168.0.0/19 private:192.168.128.0/19
+2022-04-23 00:02:02 [ℹ]  subnets for ap-northeast-2b - public:192.168.32.0/19 private:192.168.160.0/19
+2022-04-23 00:02:02 [ℹ]  subnets for ap-northeast-2c - public:192.168.64.0/19 private:192.168.192.0/19
+2022-04-23 00:02:02 [ℹ]  subnets for ap-northeast-2d - public:192.168.96.0/19 private:192.168.224.0/19
+2022-04-23 00:02:03 [ℹ]  nodegroup "nodegroup" will use "ami-05cad257e1749312a" [AmazonLinux2/1.19]
+2022-04-23 00:02:03 [ℹ]  using Kubernetes version 1.19
+2022-04-23 00:02:03 [ℹ]  creating EKS cluster "production" in "ap-northeast-2" region with Fargate profile and un-managed nodes
+2022-04-23 00:02:03 [ℹ]  1 nodegroup (nodegroup) was included (based on the include/exclude rules)
+2022-04-23 00:02:03 [ℹ]  will create a CloudFormation stack for cluster itself and 1 nodegroup stack(s)
+2022-04-23 00:02:03 [ℹ]  will create a CloudFormation stack for cluster itself and 0 managed nodegroup stack(s)
+2022-04-23 00:02:03 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=ap-northeast-2 --cluster=production'
+2022-04-23 00:02:03 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "production" in "ap-northeast-2"
+2022-04-23 00:02:03 [ℹ]  CloudWatch logging will not be enabled for cluster "production" in "ap-northeast-2"
+2022-04-23 00:02:03 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=ap-northeast-2 --cluster=production'
+2022-04-23 00:02:03 [ℹ]  
+2 sequential tasks: { create cluster control plane "production", 
+    2 sequential sub-tasks: { 
+        2 sequential sub-tasks: { 
+            wait for control plane to become ready,
+            create fargate profiles,
+        },
+        create nodegroup "nodegroup",
+    } 
+}
+2022-04-23 00:02:03 [ℹ]  building cluster stack "eksctl-production-cluster"
+2022-04-23 00:02:03 [ℹ]  deploying stack "eksctl-production-cluster"
+2022-04-23 00:02:33 [ℹ]  waiting for CloudFormation stack "eksctl-production-cluster"
+2022-04-23 00:03:03 [ℹ]  waiting for CloudFormation stack "eksctl-production-cluster"
+2022-04-23 00:04:03 [ℹ]  waiting for CloudFormation stack "eksctl-production-cluster"
+2022-04-23 00:05:03 [ℹ]  waiting for CloudFormation stack "eksctl-production-cluster"
+2022-04-23 00:06:03 [ℹ]  waiting for CloudFormation stack "eksctl-production-cluster"
+2022-04-23 00:07:03 [ℹ]  waiting for CloudFormation stack "eksctl-production-cluster"
+2022-04-23 00:08:03 [ℹ]  waiting for CloudFormation stack "eksctl-production-cluster"
+2022-04-23 00:09:03 [ℹ]  waiting for CloudFormation stack "eksctl-production-cluster"
+2022-04-23 00:10:03 [ℹ]  waiting for CloudFormation stack "eksctl-production-cluster"
+2022-04-23 00:11:04 [ℹ]  waiting for CloudFormation stack "eksctl-production-cluster"
+2022-04-23 00:12:04 [ℹ]  waiting for CloudFormation stack "eksctl-production-cluster"
+2022-04-23 00:14:04 [ℹ]  creating Fargate profile "fargate" on EKS cluster "production"
+2022-04-23 00:18:23 [ℹ]  created Fargate profile "fargate" on EKS cluster "production"
+2022-04-23 00:18:53 [ℹ]  building nodegroup stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:18:54 [ℹ]  deploying stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:18:54 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:19:12 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:19:28 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:19:43 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:20:01 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:20:19 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:20:38 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:20:57 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:21:17 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:21:34 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:21:52 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:22:09 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:22:26 [ℹ]  waiting for CloudFormation stack "eksctl-production-nodegroup-nodegroup"
+2022-04-23 00:22:27 [ℹ]  waiting for the control plane availability...
+2022-04-23 00:22:27 [✔]  saved kubeconfig as "/home/ec2-user/.kube/config"
+2022-04-23 00:22:27 [ℹ]  no tasks
+2022-04-23 00:22:27 [✔]  all EKS cluster resources for "production" have been created
+2022-04-23 00:22:27 [ℹ]  adding identity "arn:aws:iam::004625312447:role/eksctl-production-nodegroup-nodeg-NodeInstanceRole-131DD4CXCZ637" to auth ConfigMap
+2022-04-23 00:22:27 [ℹ]  nodegroup "nodegroup" has 0 node(s)
+2022-04-23 00:22:27 [ℹ]  waiting for at least 1 node(s) to become ready in "nodegroup"
+2022-04-23 00:23:21 [ℹ]  nodegroup "nodegroup" has 3 node(s)
+2022-04-23 00:23:21 [ℹ]  node "ip-192-168-112-91.ap-northeast-2.compute.internal" is not ready

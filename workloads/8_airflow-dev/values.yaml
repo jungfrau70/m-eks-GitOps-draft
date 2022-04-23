@@ -902,15 +902,15 @@ webserver:
     type: LoadBalancer
     ## service annotations
     annotations: {}
-    ports:
-      - name: airflow-ui
-        port: "{{ .Values.ports.airflowUI }}"
-        targetPort: airflow-ui
-    # To change the port used to access the webserver:
     # ports:
     #   - name: airflow-ui
-    #     port: 80
+    #     port: "{{ .Values.ports.airflowUI }}"
     #     targetPort: airflow-ui
+    # To change the port used to access the webserver:
+    ports:
+      - name: airflow-ui
+        port: 80
+        targetPort: airflow-ui
     # To only expose a sidecar, not the webserver directly:
     # ports:
     #   - name: only_sidecar
