@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -7,6 +8,8 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: instance
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:004625312447:certificate/7931dcd8-db0d-4595-88df-51f3d57819aa
+    #alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    #alb.ingress.kubernetes.io/ssl-redirect: '443'
 spec:
   ingressClassName: alb
   tls:
@@ -19,20 +22,13 @@ spec:
       port:
         name: airflow-ui
   rules:
-  - host: "*.topk8s.com"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: airflow-dev-webserver
-            port:
-              number: 8080
-      - path: /bar
-        pathType: Prefix
-        backend:
-          service:
-            name: service2
-            port:
-              number: 8080
+    - host: "*.topk8s.com"
+      http:
+        paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: airflow-dev-webserver
+              port:
+                number: 8080
